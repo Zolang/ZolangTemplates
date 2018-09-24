@@ -1,0 +1,8 @@
+
+{% for ifStmt in ifList %}{% if forloop.first %}if ({{ifStmt.expression}}) {
+{{ codeBlock|indent:4," ",true }}
+}{% else%}else if ({{ifStmt.expression}}) {
+{{ codeBlock|indent:4," ",true }}
+}{% endif %}{% endfor %}{% if elseBlock %} else {
+{{ elseBlock|indent:4," ",true }}
+}{% endif %}

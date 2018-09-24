@@ -1,3 +1,3 @@
-while {{ expression }} {
+({{ params }}): {{ returnType }} {
 {{ codeBlock|indent:4," ",true }}
 }

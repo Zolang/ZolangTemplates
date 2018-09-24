@@ -1,0 +1,11 @@
+{% for property in properties %}var {{property.name}}: {{property.type}}
+{% endfor %}
+
+constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+{% for property in properties %}{{ ""|indent:4," ",true }}self.{{ property.name }} = _{{ property.name }}
+{% endfor %}
+}
+
+{% for function in functions %}fun {{ function.name }}{{ function.function }}
+
+{% endfor %}
