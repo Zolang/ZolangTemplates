@@ -1,0 +1,11 @@
+{% for property in properties %}var {{property.name}}: {{property.type}}
+{% endfor %}
+
+init({% for property in properties %}_ {{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+{% for property in properties %}{{ "\t" }}self.{{ property.name }} = {{ property.name }}
+{% endfor %}
+}
+
+{% for function in functions %}func {{ function.name }}{{ function.function }}
+
+{% endfor %}

@@ -1,0 +1,4 @@
+{% if type == "custom" %}{{stringValue}}
+{% elif type == "primitive" %}{% if primitiveType == "text" %}String{% elif primitiveType == "number" %}Double{% elif primitiveType == "boolean" %}Bool{% endif %}
+{% elif type == "list" %}[{{innerType}}]
+{% endif %}
