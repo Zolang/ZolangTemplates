@@ -2,7 +2,7 @@
 {% endfor %}
 
 constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
-{% for property in properties %}{{ ""|indent:4," ",true }}self.{{ property.name }} = _{{ property.name }}
+{% for property in properties %}{{ ""|indent:4," ",true }}this.{{ property.name }} = _{{ property.name }}
 {% endfor %}
 }
 
