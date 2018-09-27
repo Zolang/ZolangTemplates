@@ -1,11 +1,14 @@
-{% for property in properties %}var {{property.name}}: {{property.type}}
+{% for property in staticProperties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
+{% endfor %}
+{% for property in properties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
 {% endfor %}
 
 constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
-{% for property in properties %}{{ ""|indent:4," ",true }}this.{{ property.name }} = _{{ property.name }}
+{% for property in properties %}{%if !property.isStatic %}{{ ""|indent:4," ",true }}this.{{ property.name }} = _{{ property.name }}{%endif%}
 {% endfor %}
 }
 
-{% for function in functions %}fun {{ function.name }}{{ function.function }}
-
+{% for function in staticFunctions %}{% if function.accessLimitation == "private" %}private {% else %}public {% endif %}fun {{ function.name }}{{ function.function }}
+{% endfor %}
+{% for function in functions %}{% if function.accessLimitation == "private" %}private {% else %}public {% endif %}fun {{ function.name }}{{ function.function }}
 {% endfor %}
