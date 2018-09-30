@@ -1,6 +1,7 @@
-{% for property in staticProperties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
+{% for property in staticProperties %}{% if property.accessLimitation == "private" %}private {% endif %}static var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
-{% for property in properties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
+
+{% for property in properties %}{% if property.accessLimitation == "private" %}private {% endif %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
 
 init({% for property in properties %}_ {{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
@@ -8,5 +9,8 @@ init({% for property in properties %}_ {{ property.name }}: {{ property.type }}{
 {% endfor %}
 }
 
-{% for function in functions %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}func {{ function.name }}{{ function.function }}
+{% for function in staticFunctions %}{% if property.accessLimitation == "private" %}private {% endif %}static func {{ function.name }}{{ function.function }}
+{% endfor %}
+
+{% for function in functions %}{% if property.accessLimitation == "private" %}private {% endif %}func {{ function.name }}{{ function.function }}
 {% endfor %}

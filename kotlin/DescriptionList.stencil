@@ -1,14 +1,19 @@
-{% for property in staticProperties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
-{% endfor %}
-{% for property in properties %}{% if property.accessLimitation == "private" %}private {% else %}public {% endif %}var {{property.name}}: {{property.type}}
+companion object {
+{% for property in staticProperties %}    {% if property.accessLimitation == "private" %}private {% endif %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
 
-constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
-{% for property in properties %}{%if !property.isStatic %}{{ ""|indent:4," ",true }}this.{{ property.name }} = _{{ property.name }}{%endif%}
+{% for function in staticFunctions %}    {% if property.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function|indent:4," ",false }}
 {% endfor %}
 }
 
-{% for function in staticFunctions %}{% if function.accessLimitation == "private" %}private {% else %}public {% endif %}fun {{ function.name }}{{ function.function }}
+{% for property in properties %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
-{% for function in functions %}{% if function.accessLimitation == "private" %}private {% else %}public {% endif %}fun {{ function.name }}{{ function.function }}
+
+constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
+{% for property in properties %}{{ ""|indent:4," ",true }}this.{{ property.name }} = _{{ property.name }}
+{% endfor %}
+}
+
+{% for function in functions %}fun {{ function.name }}{{ function.function }}
+
 {% endfor %}

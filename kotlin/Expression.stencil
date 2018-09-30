@@ -1,6 +1,7 @@
 {% if expressionType == "identifier" %}{{ value }}
 {% elif expressionType == "functionCall" %}{{ name }}({{ expressions|join:", " }})
 {% elif expressionType == "operation" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}{{ operator }}{% endif%} {{rightExpression}}
+{% elif expressionType == "dot" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}.{% endif%} {{rightExpression}}
 {% elif expressionType == "prefix" %}{% if prefix == "-" %}-{% elif prefix == "not" %}!{% else %}{{ prefix }}{% endif %}{{ expression }}
 {% elif expressionType == "integerLiteral" %}{{ value }}.0
 {% elif expressionType == "floatLiteral" %}{{ value }}
@@ -8,6 +9,6 @@
 {% elif expressionType == "parentheses" %}({{ expression }})
 {% elif expressionType == "listLiteral" %}arrayOf({{ expressions|join:", " }})
 {% elif expressionType == "listAccess" %}{{ identifier }}[{{ expression }}]
-{% elif expressionType == "stringLiteral" %}"{{ value }}"
-{% elif expressionType == "templatedString" %}{% for expression in expressions %}"${ {{ expression }} }"{% if not forloop.last %} + {% endif %}{% endfor %}
+{% elif expressionType == "textLiteral" %}"{{ value }}"
+{% elif expressionType == "templatedText" %}{% for expression in expressions %}"${ {{ expression }} }"{% if not forloop.last %} + {% endif %}{% endfor %}
 {% endif %}
