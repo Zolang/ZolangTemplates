@@ -2,7 +2,7 @@ companion object {
 {% for property in staticProperties %}    {% if property.accessLimitation == "private" %}private {% endif %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
 
-{% for function in staticFunctions %}    {% if property.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function|indent:4," ",false }}
+{% for function in staticFunctions %}    {% if function.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function|indent:4," ",false }}
 {% endfor %}
 }
 
