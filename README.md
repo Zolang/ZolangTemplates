@@ -5,3 +5,19 @@
 </p>
 
 # ZolangTemplates
+
+## Roadmap: Upcoming Language Templates
+
+Python-2.7
+
+JavaScript-Node
+
+JavaScript
+
+Java
+
+C#
+
+Go
+
+Haxe
