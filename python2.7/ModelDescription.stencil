@@ -1,0 +1,2 @@
+class {{ name }}:
+{{ descriptionList|indent:4," ",true }}

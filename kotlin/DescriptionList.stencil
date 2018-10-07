@@ -2,11 +2,11 @@ companion object {
 {% for property in staticProperties %}    {% if property.accessLimitation == "private" %}private {% endif %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
 
-{% for function in staticFunctions %}    {% if property.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function|indent:4," ",false }}
+{% for function in staticFunctions %}    {% if function.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function|indent:4," ",false }}
 {% endfor %}
 }
 
-{% for property in properties %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
+{% for property in properties %}{% if property.accessLimitation == "private" %}private {% endif %}var {{property.name}}: {{property.type}}{% if property.defaultValue %} = {{ property.defaultValue }}{% endif %}
 {% endfor %}
 
 constructor({% for property in properties %}_{{ property.name }}: {{ property.type }}{% if not forloop.last %}, {% endif %}{% endfor %}) {
@@ -14,6 +14,6 @@ constructor({% for property in properties %}_{{ property.name }}: {{ property.ty
 {% endfor %}
 }
 
-{% for function in functions %}fun {{ function.name }}{{ function.function }}
+{% for function in functions %}{% if function.accessLimitation == "private" %}private {% endif %}fun {{ function.name }}{{ function.function }}
 
 {% endfor %}

@@ -1,0 +1,1 @@
+{% for param in params %}{{param.name}}{% if not forloop.last %}, {% endif %}{% endfor %}

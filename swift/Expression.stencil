@@ -1,9 +1,9 @@
 {% if expressionType == "identifier" %}{{ value }}
 {% elif expressionType == "functionCall" %}{{ name }}({{ expressions|join:", " }})
-{% elif expressionType == "operation" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}{{ operator }}{% endif%} {{rightExpression}}
-{% elif expressionType == "dot" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}.{% endif%} {{rightExpression}}
+{% elif expressionType == "operation" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% elif operator == "modulus" %}%{% else %}{{ operator }}{% endif%} {{rightExpression}}
+{% elif expressionType == "dot" %}{{leftExpression}}.{{rightExpression}}
 {% elif expressionType == "prefix" %}{% if prefix == "-" %}-{% elif prefix == "not" %}!{% else %}{{ prefix }}{% endif %}{{ expression }}
-{% elif expressionType == "integerLiteral" %}{{ value }}
+{% elif expressionType == "integerLiteral" %}{{ value }}.0
 {% elif expressionType == "floatLiteral" %}{{ value }}
 {% elif expressionType == "booleanLiteral" %}{{ value }}
 {% elif expressionType == "parentheses" %}({{ expression }})
