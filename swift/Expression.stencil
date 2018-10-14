@@ -1,19 +1,15 @@
 {% if expressionType == "identifier" %}{{ value }}
 {% elif expressionType == "functionCall" %}{{ name }}({{ expressions|join:", " }})
-<<<<<<< HEAD
 {% elif expressionType == "operation" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% elif operator == "modulus" %}%{% else %}{{ operator }}{% endif%} {{rightExpression}}
 {% elif expressionType == "dot" %}{{leftExpression}}.{{rightExpression}}
-=======
-{% elif expressionType == "operation" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}{{ operator }}{% endif%} {{rightExpression}}
-{% elif expressionType == "dot" %}{{leftExpression}} {% if operator == "plus" %}+{% elif operator == "modulus" %}%{% elif operator == "minus" %}-{% elif operator == "times" %}*{% elif operator == "over" %}/{% elif operator == "or" %}||{% elif operator == "and" %}&&{% elif operator == "equals" %}=={% else %}.{% endif%} {{rightExpression}}
->>>>>>> d422eb6b176a4ec8588ecfe9e10fc63901580e73
 {% elif expressionType == "prefix" %}{% if prefix == "-" %}-{% elif prefix == "not" %}!{% else %}{{ prefix }}{% endif %}{{ expression }}
 {% elif expressionType == "integerLiteral" %}{{ value }}.0
 {% elif expressionType == "floatLiteral" %}{{ value }}
 {% elif expressionType == "booleanLiteral" %}{{ value }}
 {% elif expressionType == "parentheses" %}({{ expression }})
 {% elif expressionType == "listLiteral" %}[ {{ expressions|join:", " }} ]
-{% elif expressionType == "listAccess" %}{{ identifier }}[{{ expression }}]
+{% elif expressionType == "dictionaryLiteral" %}[{% for keyValue in keyValuePairs %}{{ keyValue.key }}: {{ keyValue.value }}{% if not forloop.last %}, {% endif %}{% endfor %}]
+{% elif expressionType == "subscript" %}{{ identifier }}[{{ expression }}]
 {% elif expressionType == "textLiteral" %}"{{ value }}"
 {% elif expressionType == "templatedText" %}{% for expression in expressions %}"\({{expression}})"{% if not forloop.last %} + {% endif %}{% endfor %}
 {% endif %}
