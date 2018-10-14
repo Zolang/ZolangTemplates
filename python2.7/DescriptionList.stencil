@@ -5,7 +5,8 @@ def __init__(self, {% for property in properties %}{{ property.name }}{% if not 
 {% for property in properties %}{{ ""|indent:4," ",true }}self.{{ property.name }} = {{ property.name }}
 {% endfor %}
 
-{% for function in staticFunctions %}def {{ function.name }}({{ function.function }}):
+{% for function in staticFunctions %}@classmethod
+def {{ function.name }}({{ function.function }}):
 {% endfor %}
 
 {% for function in functions %}def {{ function.name }}(self, {{ function.context.params }}):
