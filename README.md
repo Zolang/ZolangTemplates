@@ -8,8 +8,6 @@
 
 ## Roadmap: Upcoming Language Templates
 
-Python-2.7
-
 JavaScript-Node
 
 JavaScript
