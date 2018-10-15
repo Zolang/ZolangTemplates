@@ -8,14 +8,12 @@
 
 ## Roadmap: Upcoming Language Templates
 
-JavaScript-Node
-
-JavaScript
-
-Java
-
-C#
-
-Go
-
-Haxe
+- [X] Swift
+- [X] Kotlin
+- [X] Python 2.7
+- [ ] JavaScript
+- [ ] Haxe
+- [ ] Java
+- [ ] JavaScript-Node
+- [ ] Go
+- [ ] C#
