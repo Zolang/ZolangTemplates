@@ -12,8 +12,8 @@
 - [X] Kotlin
 - [X] Python 2.7
 - [ ] JavaScript
-- [ ] Haxe
-- [ ] Java
+- [ ] Haxe
+- [ ] Java
 - [ ] JavaScript-Node
-- [ ] Go
-- [ ] C#
+- [ ] Go
+- [ ] C#
