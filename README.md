@@ -11,7 +11,7 @@
 - [X] Swift
 - [X] Kotlin
 - [X] Python 2.7
-- [ ] JavaScript
+- [X] JavaScript
 - [ ] Haxe
 - [ ] Java
 - [ ] JavaScript-Node
